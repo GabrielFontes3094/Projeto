@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
+import { SidebarService } from '../../service/sidebar-service.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  isOpen = true; 
 
+  constructor(private sidebarService: SidebarService) { }
 
+  toggleSidebar() {
+    this.isOpen = !this.isOpen; 
+    this.sidebarService.toggle(); 
+  }
+  
 }
